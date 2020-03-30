@@ -49,3 +49,5 @@ process ArticMinion {
     shell:
     """
     artic minion --normalise 200  --threads ${params.max_cpus} --scheme-diretory /opt/artic-ncov2019/primer_schemes --read-file ${y} --fast5-directory --sequencing-summary nCoV-2019/V3 samplename
+    """
+}
