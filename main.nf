@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 
 params.fastq_files = "$baseDir/guppy_basecall/*.fastq"
+params.artic_scheme = "V2"
 params.cpus = 4
 params.prefix = "run_name"
 
@@ -41,13 +42,14 @@ process GuppyPlex{
 
 
 process ArticMinion {
-    cpus params.max_cpus
+    cpus params.cpus
 
     input:
     file y from guppyplexed
 
     shell:
     """
-    artic minion --normalise 200  --threads ${params.max_cpus} --scheme-diretory /opt/artic-ncov2019/primer_schemes --read-file ${y} --fast5-directory --sequencing-summary nCoV-2019/V3 samplename
+    SAMPLE=\$(ls *.fastq | cut -d'_' -f1 | uniq)
+    artic minion --normalise 200  --threads ${params.cpus} --scheme-directory /opt/artic-ncov2019/primer_schemes --skip-nanopolish --read-file ${y.fileName} nCoV-2019/${params.artic_scheme} \$SAMPLE 
     """
 }
