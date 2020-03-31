@@ -1,11 +1,15 @@
 #!/usr/bin/env nextflow
 
-params.fastq_files = "$baseDir/guppy_basecall/*.fastq"
+params.fastq_files = "$baseDir/fastq/*.fastq"
+params.fast5_dir = "$baseDir/fast5"
+params.summary_file = "$baseDir/sequencing_summary_*.txt"
 params.artic_scheme = "V2"
 params.cpus = 4
 params.prefix = "run_name"
 
 fqs = Channel.fromPath(params.fastq_files)
+fa5 = file(params.fast5_dir)
+sum = file(params.summary_file)
 
 
 process GuppyBarCoder{
@@ -50,6 +54,6 @@ process ArticMinion {
     shell:
     """
     SAMPLE=\$(ls *.fastq | cut -d'_' -f1 | uniq)
-    artic minion --normalise 200  --threads ${params.cpus} --scheme-directory /opt/artic-ncov2019/primer_schemes --skip-nanopolish --read-file ${y.fileName} nCoV-2019/${params.artic_scheme} \$SAMPLE 
+    artic minion --normalise 200  --threads ${params.cpus} --scheme-directory /opt/artic-ncov2019/primer_schemes --read-file ${y.fileName} --fast5-directory ${fa5} --sequencing-summary ${sum} nCoV-2019/${params.artic_scheme} \$SAMPLE 
     """
 }
