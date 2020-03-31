@@ -24,6 +24,9 @@ From: ubuntu:16.04
 	#Install ARTIC
 	git clone --recursive https://github.com/artic-network/artic-ncov2019.git
 	conda env update -n base --file artic-ncov2019/environment.yml
+	cd artic-ncov2019/primer_schemes/nCoV-2019/V2
+	samtools faidx nCoV-2019.reference.fasta
+	cd /opt
 	
 	# Clean
 	apt-get remove --purge --yes && \
