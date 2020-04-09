@@ -8,8 +8,8 @@ From: ubuntu:16.04
 	apt install -y wget zip git python3-pip apt-transport-https
 
 	# Install matplotlib biopython
-	pip install matplotlib
-	pip install biopython
+	pip3 install matplotlib
+	pip3 install biopython
 	
 	#Install guppy
 	cd /tmp && \
