@@ -7,9 +7,12 @@ From: ubuntu:16.04
 	apt upgrade -y
 	apt install -y wget zip git python3-pip apt-transport-https
 
+	# Upgrade pip
+	pip3 install --upgrade pip
+
 	# Install matplotlib biopython
-	pip3 install matplotlib
-	pip3 install biopython
+	pip install matplotlib
+	pip install biopython
 	
 	#Install guppy
 	cd /tmp && \
