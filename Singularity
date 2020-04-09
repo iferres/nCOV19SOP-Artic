@@ -6,6 +6,10 @@ From: ubuntu:16.04
 	apt update -y
 	apt upgrade -y
 	apt install -y wget zip git python3-pip apt-transport-https
+
+	# Install matplotlib biopython
+	pip install matplotlib
+	pip install biopython
 	
 	#Install guppy
 	cd /tmp && \
@@ -27,6 +31,9 @@ From: ubuntu:16.04
 	cd artic-ncov2019/primer_schemes/nCoV-2019/V2
 	samtools faidx nCoV-2019.reference.fasta
 	cd /opt
+
+	wget https://raw.githubusercontent.com/connor-lab/ncov2019-artic-nf/master/bin/qc.py -O /usr/local/bin/qc.py
+	chmod +x /usr/local/bin/qc.py
 	
 	# Clean
 	apt-get remove --purge --yes && \
