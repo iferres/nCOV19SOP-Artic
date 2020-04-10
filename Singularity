@@ -32,8 +32,8 @@ From: ubuntu:16.04
 	cd /opt
 
 	# Install matplotlib and biopython
-	pip3 install matplotlib
-	pip3 install biopython
+	pip install matplotlib
+	pip install biopython
 
 	wget https://raw.githubusercontent.com/connor-lab/ncov2019-artic-nf/master/bin/qc.py -O /usr/local/bin/qc.py
 	chmod +x /usr/local/bin/qc.py
