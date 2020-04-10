@@ -11,8 +11,8 @@ From: ubuntu:16.04
 	pip3 install --upgrade pip
 
 	# Install matplotlib biopython
-	pip install matplotlib
-	pip install biopython
+	pip3 install matplotlib
+	pip3 install biopython
 	
 	#Install guppy
 	cd /tmp && \
