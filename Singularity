@@ -24,9 +24,6 @@ From: ubuntu:16.04
 	# Upgrade pip3
 	pip3 install --upgrade pip
 
-	# Upgrade pip3
-	pip3 install --upgrade pip3
-
 	#Install ARTIC
 	git clone --recursive https://github.com/artic-network/artic-ncov2019.git
 	conda env update -n base --file artic-ncov2019/environment.yml
