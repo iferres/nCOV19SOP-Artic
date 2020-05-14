@@ -27,13 +27,14 @@ From: ubuntu:16.04
 	#Install ARTIC
 	git clone --recursive https://github.com/artic-network/artic-ncov2019.git
 	conda env update -n base --file artic-ncov2019/environment.yml
+	conda install biopython=1.74 matplotlib pandas=0.23.0=py36_1 samtools=1.9
 	cd artic-ncov2019/primer_schemes/nCoV-2019/V2
 	samtools faidx nCoV-2019.reference.fasta
 	cd /opt
 
 	# Install matplotlib and biopython
-	pip install matplotlib
-	pip install biopython
+	# pip install matplotlib
+	# pip install biopython
 
 	wget https://raw.githubusercontent.com/connor-lab/ncov2019-artic-nf/master/bin/qc.py -O /usr/local/bin/qc.py
 	chmod +x /usr/local/bin/qc.py
